@@ -12,7 +12,7 @@ steps:
 - name: build
   image: openjdk:8-jre-alpine3.9
   commands:
-    - "java -jar /countries-assembly-1.0.1.jar"
+    - "java -jar ./countries-assembly-1.0.1.jar"
 
 - name: publish  
   image: plugins/ecr
