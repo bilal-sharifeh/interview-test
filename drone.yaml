@@ -1,0 +1,31 @@
+#Drone CI File for Amazon ECR Pushes
+#Commit Message: Second Change
+#Author: Ravi
+#test
+
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+
+- name: build
+  image: openjdk:8-jre-alpine3.9
+  commands:
+    - "java -jar /countries-assembly-1.0.1.jar"
+
+- name: publish  
+  image: plugins/ecr
+  settings:
+    access_key: 
+      from_secret: aws_access_key
+    secret_key: 
+      from_secret: aws_secret_key
+    repo: 
+      from_secret: aws_ecr_repo
+    registry: 
+      from_secret: aws_ecr_registry
+    region:
+      from_secret: aws_region
+    tags:
+        - '1.0.1_drone'
