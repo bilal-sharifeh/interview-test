@@ -28,4 +28,4 @@ steps:
     region:
       from_secret: aws_region
     tags:
-        - '1.0.1_drone'
+        - '1.0.2_drone'
